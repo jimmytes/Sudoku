@@ -22,7 +22,7 @@
   <body>
     <h1 class="header">Sudoku</h1>
 
-    <div id="GameDiv" cc_exact_fit_screen="false" style="width: 720px; height: 1360px;">
+    <div id="GameDiv" cc_exact_fit_screen="false">
       <div id="Cocos3dGameContainer">
         <canvas id="GameCanvas" width="720" height="1360" tabindex="99"></canvas>
       </div>
@@ -41,6 +41,18 @@
 
 <script>
     System.import('./index.js').catch(function(err) { console.error(err); })
+    window.addEventListener('resize', adjustElementSize);
+    adjustElementSize();
+    function adjustElementSize() {
+      const aspectRatio = 1170 / 2532;
+
+      const element = document.getElementById('GameDiv');
+      const screenWidth = window.innerWidth;  // 取得螢幕寬度
+      console.log(screenWidth)
+
+      element.style.width = screenWidth - 10 + 'px';  // 設置元素寬度為螢幕寬度
+      element.style.height = (screenWidth / aspectRatio) + 'px';  // 根據比例計算高度
+    }
 </script>
   </body>
 </html>
