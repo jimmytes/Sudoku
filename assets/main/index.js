@@ -1,12 +1,900 @@
-System.register("chunks:///_virtual/debug-view-runtime-control.ts",["./rollupPluginModLoBabelHelpers.js","cc"],(function(t){"use strict";var e,o,i,n,s,l,r,a,g,h,c,p,C,d,m,u,T;return{setters:[function(t){e=t.applyDecoratedDescriptor,o=t.inheritsLoose,i=t.initializerDefineProperty,n=t.assertThisInitialized},function(t){s=t.cclegacy,l=t._decorator,r=t.Node,a=t.Color,g=t.Canvas,h=t.UITransform,c=t.instantiate,p=t.Label,C=t.RichText,d=t.Toggle,m=t.Button,u=t.director,T=t.Component}],execute:function(){var L,f,M,b,v,x,E,S,I;s._RF.push({},"b2bd1+njXxJxaFY3ymm06WU","debug-view-runtime-control",void 0);var A=l.ccclass,y=l.property;t("DebugViewRuntimeControl",(L=A("internal.DebugViewRuntimeControl"),f=y(r),M=y(r),b=y(r),L((E=e((x=function(t){function e(){for(var e,o=arguments.length,s=new Array(o),l=0;l<o;l++)s[l]=arguments[l];return e=t.call.apply(t,[this].concat(s))||this,i(e,"compositeModeToggle",E,n(e)),i(e,"singleModeToggle",S,n(e)),i(e,"EnableAllCompositeModeButton",I,n(e)),e._single=0,e.strSingle=["No Single Debug","Vertex Color","Vertex Normal","Vertex Tangent","World Position","Vertex Mirror","Face Side","UV0","UV1","UV Lightmap","Project Depth","Linear Depth","Fragment Normal","Fragment Tangent","Fragment Binormal","Base Color","Diffuse Color","Specular Color","Transparency","Metallic","Roughness","Specular Intensity","IOR","Direct Diffuse","Direct Specular","Direct All","Env Diffuse","Env Specular","Env All","Emissive","Light Map","Shadow","AO","Fresnel","Direct Transmit Diffuse","Direct Transmit Specular","Env Transmit Diffuse","Env Transmit Specular","Transmit All","Direct TRT","Env TRT","TRT All","Fog"],e.strComposite=["Direct Diffuse","Direct Specular","Env Diffuse","Env Specular","Emissive","Light Map","Shadow","AO","Normal Map","Fog","Tone Mapping","Gamma Correction","Fresnel","Transmit Diffuse","Transmit Specular","TRT","TT"],e.strMisc=["CSM Layer Coloration","Lighting With Albedo"],e.compositeModeToggleList=[],e.singleModeToggleList=[],e.miscModeToggleList=[],e.textComponentList=[],e.labelComponentList=[],e.textContentList=[],e.hideButtonLabel=void 0,e._currentColorIndex=0,e.strColor=["<color=#ffffff>","<color=#000000>","<color=#ff0000>","<color=#00ff00>","<color=#0000ff>"],e.color=[a.WHITE,a.BLACK,a.RED,a.GREEN,a.BLUE],e}o(e,t);var s=e.prototype;return s.start=function(){if(this.node.parent.getComponent(g)){var t=this.node.parent.getComponent(h),e=.5*t.width,o=.5*t.height,i=.1*e-e,n=o-.1*o,s=this.node.getChildByName("MiscMode"),l=c(s);l.parent=this.node,l.name="Buttons";var r=c(s);r.parent=this.node,r.name="Titles";for(var u=0;u<2;u++){var T=c(this.EnableAllCompositeModeButton.getChildByName("Label"));T.setPosition(i+(u>0?450:150),n,0),T.setScale(.75,.75,.75),T.parent=r;var L=T.getComponent(p);L.string=u?"----------Composite Mode----------":"----------Single Mode----------",L.color=a.WHITE,L.overflow=0,this.labelComponentList[this.labelComponentList.length]=L}n-=20;for(var f=0,M=0;M<this.strSingle.length;M++,f++){M===this.strSingle.length>>1&&(i+=200,f=0);var b=M?c(this.singleModeToggle):this.singleModeToggle;b.setPosition(i,n-20*f,0),b.setScale(.5,.5,.5),b.parent=this.singleModeToggle.parent;var v=b.getComponentInChildren(C);v.string=this.strSingle[M],this.textComponentList[this.textComponentList.length]=v,this.textContentList[this.textContentList.length]=v.string,b.on(d.EventType.TOGGLE,this.toggleSingleMode,this),this.singleModeToggleList[M]=b}i+=200,this.EnableAllCompositeModeButton.setPosition(i+15,n,0),this.EnableAllCompositeModeButton.setScale(.5,.5,.5),this.EnableAllCompositeModeButton.on(m.EventType.CLICK,this.enableAllCompositeMode,this),this.EnableAllCompositeModeButton.parent=l;var x=this.EnableAllCompositeModeButton.getComponentInChildren(p);this.labelComponentList[this.labelComponentList.length]=x;var E=c(this.EnableAllCompositeModeButton);E.setPosition(i+90,n,0),E.setScale(.5,.5,.5),E.on(m.EventType.CLICK,this.changeTextColor,this),E.parent=l,(x=E.getComponentInChildren(p)).string="TextColor",this.labelComponentList[this.labelComponentList.length]=x;var S=c(this.EnableAllCompositeModeButton);S.setPosition(i+200,n,0),S.setScale(.5,.5,.5),S.on(m.EventType.CLICK,this.hideUI,this),S.parent=this.node.parent,(x=S.getComponentInChildren(p)).string="Hide UI",this.labelComponentList[this.labelComponentList.length]=x,this.hideButtonLabel=x,n-=40;for(var I=0;I<this.strMisc.length;I++){var A=c(this.compositeModeToggle);A.setPosition(i,n-20*I,0),A.setScale(.5,.5,.5),A.parent=s;var y=A.getComponentInChildren(C);y.string=this.strMisc[I],this.textComponentList[this.textComponentList.length]=y,this.textContentList[this.textContentList.length]=y.string,A.getComponent(d).isChecked=!!I,A.on(d.EventType.TOGGLE,I?this.toggleLightingWithAlbedo:this.toggleCSMColoration,this),this.miscModeToggleList[I]=A}n-=150;for(var D=0;D<this.strComposite.length;D++){var B=D?c(this.compositeModeToggle):this.compositeModeToggle;B.setPosition(i,n-20*D,0),B.setScale(.5,.5,.5),B.parent=this.compositeModeToggle.parent;var w=B.getComponentInChildren(C);w.string=this.strComposite[D],this.textComponentList[this.textComponentList.length]=w,this.textContentList[this.textContentList.length]=w.string,B.on(d.EventType.TOGGLE,this.toggleCompositeMode,this),this.compositeModeToggleList[D]=B}}else console.error("debug-view-runtime-control should be child of Canvas")},s.isTextMatched=function(t,e){var o=new String(t),i=o.search(">");return-1===i?t===e:(o=(o=o.substr(i+1)).substr(0,o.search("<")))===e},s.toggleSingleMode=function(t){for(var e=u.root.debugView,o=t.getComponentInChildren(C),i=0;i<this.strSingle.length;i++)this.isTextMatched(o.string,this.strSingle[i])&&(e.singleMode=i)},s.toggleCompositeMode=function(t){for(var e=u.root.debugView,o=t.getComponentInChildren(C),i=0;i<this.strComposite.length;i++)this.isTextMatched(o.string,this.strComposite[i])&&e.enableCompositeMode(i,t.isChecked)},s.toggleLightingWithAlbedo=function(t){u.root.debugView.lightingWithAlbedo=t.isChecked},s.toggleCSMColoration=function(t){u.root.debugView.csmLayerColoration=t.isChecked},s.enableAllCompositeMode=function(t){var e=u.root.debugView;e.enableAllCompositeMode(!0);for(var o=0;o<this.compositeModeToggleList.length;o++){this.compositeModeToggleList[o].getComponent(d).isChecked=!0}var i=this.miscModeToggleList[0].getComponent(d);i.isChecked=!1,e.csmLayerColoration=!1,(i=this.miscModeToggleList[1].getComponent(d)).isChecked=!0,e.lightingWithAlbedo=!0},s.hideUI=function(t){var e=this.node.getChildByName("Titles"),o=!e.active;this.singleModeToggleList[0].parent.active=o,this.miscModeToggleList[0].parent.active=o,this.compositeModeToggleList[0].parent.active=o,this.EnableAllCompositeModeButton.parent.active=o,e.active=o,this.hideButtonLabel.string=o?"Hide UI":"Show UI"},s.changeTextColor=function(t){this._currentColorIndex++,this._currentColorIndex>=this.strColor.length&&(this._currentColorIndex=0);for(var e=0;e<this.textComponentList.length;e++)this.textComponentList[e].string=this.strColor[this._currentColorIndex]+this.textContentList[e]+"</color>";for(var o=0;o<this.labelComponentList.length;o++)this.labelComponentList[o].color=this.color[this._currentColorIndex]},s.onLoad=function(){},s.update=function(t){},e}(T)).prototype,"compositeModeToggle",[f],{configurable:!0,enumerable:!0,writable:!0,initializer:function(){return null}}),S=e(x.prototype,"singleModeToggle",[M],{configurable:!0,enumerable:!0,writable:!0,initializer:function(){return null}}),I=e(x.prototype,"EnableAllCompositeModeButton",[b],{configurable:!0,enumerable:!0,writable:!0,initializer:function(){return null}}),v=x))||v));s._RF.pop()}}}));
+System.register("chunks:///_virtual/debug-view-runtime-control.ts", ['./rollupPluginModLoBabelHelpers.js', 'cc'], function (exports) {
+  'use strict';
 
-System.register("chunks:///_virtual/game.ts",["./rollupPluginModLoBabelHelpers.js","cc","./gVariable.ts"],(function(e){"use strict";var t,o,i,n,r,l,a,p,s,c,u,h,m,g,d;return{setters:[function(e){t=e.applyDecoratedDescriptor,o=e.inheritsLoose,i=e.initializerDefineProperty,n=e.assertThisInitialized},function(e){r=e.cclegacy,l=e._decorator,a=e.Label,p=e.Node,s=e.SpriteFrame,c=e.Prefab,u=e.Button,h=e.instantiate,m=e.Color,g=e.Component},function(e){d=e.gVariable}],execute:function(){var b,f,N,v,C,y,U,w,B,T,L,S,z,I,P,k,x,A,D,M,_;r._RF.push({},"08607C2N4xEfKHmx9Z3JsQ6","game",void 0);var E=l.ccclass,F=l.property,H=0,R=1,V=0,W=[],j=[d.level1,d.level2],J=[d.level1Ans,d.level2Ans];e("game",(b=E("game"),f=F(a),N=F(a),v=F(a),C=F(p),y=F(p),U=F(p),w=F({type:s}),B=F(p),T=F(c),b((z=t((S=function(e){function t(){for(var t,o=arguments.length,r=new Array(o),l=0;l<o;l++)r[l]=arguments[l];return t=e.call.apply(e,[this].concat(r))||this,i(t,"error",z,n(t)),i(t,"title",I,n(t)),i(t,"time",P,n(t)),i(t,"table",k,n(t)),i(t,"topicNum",x,n(t)),i(t,"tableBtn",A,n(t)),i(t,"numBtnSprite",D,n(t)),i(t,"UINode",M,n(t)),i(t,"popUp",_,n(t)),t.popUpNode=null,t.elapsedTime=0,t}o(t,e);var r=t.prototype;return r.start=function(){var e=this;this.popUpNode=null,this.elapsedTime=0,this.createTopicNum(),this.createTableBtn(),d.nowChooseNumber=1,this.UINode.children[0].getComponent(u).normalSprite=this.numBtnSprite[R],d.eventTarget.on("closePop",(function(t){e.closePopUI()}))},r.update=function(e){this.elapsedTime+=e;var t=Math.floor(this.elapsedTime/60),o=Math.floor(this.elapsedTime%60),i=this.formatTime(t)+":"+this.formatTime(o);this.time&&null==this.popUpNode&&(this.time.string=i)},r.formatTime=function(e){return e<10?"0"+e:""+e},r.createTopicNum=function(){for(var e=-3,t=3,o=0;o<9;o++){o%3==0&&(t-=3);for(var i=0;i<9;i++){i%3==0&&(e+=3);var n=h(this.topicNum);n.active=!0,n.getComponent(a).string=j[d.nowLevel][o][i],this.table.addChild(n),n.setPosition(58*i-234+e,236-58*o+t)}e=-3}},r.createTableBtn=function(){for(var e=-3,t=3,o=0,i=0;i<9;i++){i%3==0&&(t-=3);for(var n=0;n<9;n++){n%3==0&&(e+=3);var r=h(this.tableBtn);r.active=!0,this.table.addChild(r),r.setPosition(58*n-234+e,236-58*i+t),r.getComponent(u).clickEvents[0].customEventData=o.toString()," "==j[d.nowLevel][i][n]?(W.push(r),r.getComponent(u).interactable=!0,r.name="blank"):r.getComponent(u).interactable=!1,o++}e=-3}},r.clickTable=function(e,t){console.log("桌面位置: "+t);var o=e.target,i=e.target.getChildByName("Label").getComponent(a);i.string!=d.nowChooseNumber?(i.string=d.nowChooseNumber,this.checkWin(t,i,o)):console.log("這格已經是這個數字了")},r.chooseNum=function(e,t){console.log("選擇數字: "+t);for(var o=0;o<9;o++)this.UINode.children[o].getComponent(u).normalSprite=this.numBtnSprite[H];this.UINode.children[t-1].getComponent(u).normalSprite=this.numBtnSprite[R],d.nowChooseNumber=t},r.checkWin=function(e,t,o){var i=e%9,n=Math.floor(e/9);console.log("該格的解答: "+J[d.nowLevel][n][i]),J[d.nowLevel][n][i]==d.nowChooseNumber?(console.log("correct"),t.color=new m(0,255,0,255),o.name="correct"):(console.log("error"),t.color=new m(255,0,0,255),V++,this.error.string="錯誤次數"+V.toString()+" / 3",o.name="error",3==V&&(console.log("you lose"),this.popUpNode=h(this.popUp),this.popUpNode.getChildByName("bg").getChildByName("Label").getComponent(a).string=d.popUpText.lose,this.popUpNode.getChildByName("bg").getChildByName("Time").getComponent(a).string="cost time: "+this.time.string,this.node.addChild(this.popUpNode)));for(var r=0;r<W.length;r++){if("blank"==W[r].name||"error"==W[r].name)return;r==W.length-1&&(console.log("you win"),this.popUpNode=h(this.popUp),this.popUpNode.getChildByName("bg").getChildByName("Label").getComponent(a).string=d.popUpText.win,this.popUpNode.getChildByName("bg").getChildByName("Time").getComponent(a).string="cost time: "+this.time.string,this.node.addChild(this.popUpNode))}},r.closePopUI=function(){this.node.removeChild(this.popUpNode),this.popUpNode.destroy(),this.popUpNode=null,this.nextLevel()},r.nextLevel=function(){3!=V&&(d.nowLevel++,this.title.string="Level"+(d.nowLevel+1)),this.reset()},r.reset=function(){W=[],V=0,this.error.string="錯誤次數"+V.toString()+" / 3",this.elapsedTime=0,this.table.removeAllChildren(),this.createTopicNum(),this.createTableBtn()},t}(g)).prototype,"error",[f],{configurable:!0,enumerable:!0,writable:!0,initializer:function(){return null}}),I=t(S.prototype,"title",[N],{configurable:!0,enumerable:!0,writable:!0,initializer:function(){return null}}),P=t(S.prototype,"time",[v],{configurable:!0,enumerable:!0,writable:!0,initializer:function(){return null}}),k=t(S.prototype,"table",[C],{configurable:!0,enumerable:!0,writable:!0,initializer:function(){return null}}),x=t(S.prototype,"topicNum",[y],{configurable:!0,enumerable:!0,writable:!0,initializer:function(){return null}}),A=t(S.prototype,"tableBtn",[U],{configurable:!0,enumerable:!0,writable:!0,initializer:function(){return null}}),D=t(S.prototype,"numBtnSprite",[w],{configurable:!0,enumerable:!0,writable:!0,initializer:function(){return[]}}),M=t(S.prototype,"UINode",[B],{configurable:!0,enumerable:!0,writable:!0,initializer:function(){return null}}),_=t(S.prototype,"popUp",[T],{configurable:!0,enumerable:!0,writable:!0,initializer:function(){return null}}),L=S))||L));r._RF.pop()}}}));
+  var _applyDecoratedDescriptor, _inheritsLoose, _initializerDefineProperty, _assertThisInitialized, cclegacy, _decorator, Node, Color, Canvas, UITransform, instantiate, Label, RichText, Toggle, Button, director, Component;
 
-System.register("chunks:///_virtual/gVariable.ts",["./rollupPluginModLoBabelHelpers.js","cc"],(function(e){"use strict";var t,n,r,o,a;return{setters:[function(e){t=e.inheritsLoose},function(e){n=e.cclegacy,r=e._decorator,o=e.EventTarget,a=e.Component}],execute:function(){var l,i;n._RF.push({},"6a2fd7XjLNHa5fzJEa6qfQO","gVariable",void 0);var u=r.ccclass;r.property,e("gVariable",u("gVariable")(((i=function(e){function n(){return e.apply(this,arguments)||this}t(n,e);var r=n.prototype;return r.start=function(){},r.update=function(e){},n}(a)).eventTarget=new o,i.nowLevel=0,i.nowChooseNumber=null,i.popUpText={win:"your great you win",lose:"you lose try again"},i.level1Ans=[["5","3","4","6","7","8","9","1","2"],["6","7","2","1","9","5","3","4","8"],["1","9","8","3","4","2","5","6","7"],["8","5","9","7","6","1","4","2","3"],["4","2","6","8","5","3","7","9","1"],["7","1","3","9","2","4","8","5","6"],["9","6","1","5","3","7","2","8","4"],["2","8","7","4","1","9","6","3","5"],["3","4","5","2","8","6","1","7","9"]],i.level1=[["5","3"," "," ","7"," "," "," "," "],["6"," "," ","1","9","5"," "," "," "],[" ","9","8"," "," "," "," ","6"," "],["8"," "," "," ","6"," "," "," ","3"],["4"," "," ","8"," ","3"," "," ","1"],["7"," "," "," ","2"," "," "," ","6"],[" ","6"," "," "," "," ","2","8"," "],[" "," "," ","4","1","9"," "," ","5"],[" "," "," "," ","8"," "," ","7","9"]],i.level2Ans=[["1","7","4","5","9","3","8","2","6"],["9","5","2","8","1","6","3","4","7"],["6","3","8","2","4","7","5","9","1"],["2","8","6","1","5","9","4","7","3"],["5","1","9","7","3","4","2","6","8"],["7","4","3","6","8","2","9","1","5"],["4","9","1","3","7","5","6","8","2"],["3","6","7","4","2","8","1","5","9"],["8","2","5","9","6","1","7","3","4"]],i.level2=[["1","7"," ","5"," "," ","8"," "," "],[" ","5","2"," ","1"," "," "," "," "],[" "," "," "," "," ","7","5","9"," "],[" ","8"," "," "," ","9","4"," ","3"],[" ","1","9","7"," ","4"," "," ","8"],["7"," "," "," "," "," "," ","1","5"],["4"," ","1"," "," "," ","6"," "," "],["3"," "," "," ","2"," "," ","5","9"],[" "," "," ","9","6"," "," ","3"," "]],l=i))||l);n._RF.pop()}}}));
+  return {
+    setters: [function (module) {
+      _applyDecoratedDescriptor = module.applyDecoratedDescriptor;
+      _inheritsLoose = module.inheritsLoose;
+      _initializerDefineProperty = module.initializerDefineProperty;
+      _assertThisInitialized = module.assertThisInitialized;
+    }, function (module) {
+      cclegacy = module.cclegacy;
+      _decorator = module._decorator;
+      Node = module.Node;
+      Color = module.Color;
+      Canvas = module.Canvas;
+      UITransform = module.UITransform;
+      instantiate = module.instantiate;
+      Label = module.Label;
+      RichText = module.RichText;
+      Toggle = module.Toggle;
+      Button = module.Button;
+      director = module.director;
+      Component = module.Component;
+    }],
+    execute: function () {
+      var _dec, _dec2, _dec3, _dec4, _class, _class2, _descriptor, _descriptor2, _descriptor3;
 
-System.register("chunks:///_virtual/main",["./debug-view-runtime-control.ts","./gVariable.ts","./game.ts","./popUp.ts"],(function(){"use strict";return{setters:[null,null,null,null],execute:function(){}}}));
+      cclegacy._RF.push({}, "b2bd1+njXxJxaFY3ymm06WU", "debug-view-runtime-control", undefined);
 
-System.register("chunks:///_virtual/popUp.ts",["./rollupPluginModLoBabelHelpers.js","cc","./gVariable.ts"],(function(t){"use strict";var e,o,n,r,p;return{setters:[function(t){e=t.inheritsLoose},function(t){o=t.cclegacy,n=t._decorator,r=t.Component},function(t){p=t.gVariable}],execute:function(){var c;o._RF.push({},"187eaKljNxMWqQXEy4VNdCU","popUp",void 0);var i=n.ccclass;n.property,t("popUp",i("popUp")(c=function(t){function o(){return t.apply(this,arguments)||this}e(o,t);var n=o.prototype;return n.start=function(){},n.update=function(t){},n.closeUI=function(){p.eventTarget.emit("closePop"," ")},o}(r))||c);o._RF.pop()}}}));
+      var ccclass = _decorator.ccclass,
+          property = _decorator.property;
+      var DebugViewRuntimeControl = exports('DebugViewRuntimeControl', (_dec = ccclass('internal.DebugViewRuntimeControl'), _dec2 = property(Node), _dec3 = property(Node), _dec4 = property(Node), _dec(_class = (_class2 = /*#__PURE__*/function (_Component) {
+        _inheritsLoose(DebugViewRuntimeControl, _Component);
+
+        function DebugViewRuntimeControl() {
+          var _this;
+
+          for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+            args[_key] = arguments[_key];
+          }
+
+          _this = _Component.call.apply(_Component, [this].concat(args)) || this;
+
+          _initializerDefineProperty(_this, "compositeModeToggle", _descriptor, _assertThisInitialized(_this));
+
+          _initializerDefineProperty(_this, "singleModeToggle", _descriptor2, _assertThisInitialized(_this));
+
+          _initializerDefineProperty(_this, "EnableAllCompositeModeButton", _descriptor3, _assertThisInitialized(_this));
+
+          _this._single = 0;
+          _this.strSingle = ['No Single Debug', 'Vertex Color', 'Vertex Normal', 'Vertex Tangent', 'World Position', 'Vertex Mirror', 'Face Side', 'UV0', 'UV1', 'UV Lightmap', 'Project Depth', 'Linear Depth', 'Fragment Normal', 'Fragment Tangent', 'Fragment Binormal', 'Base Color', 'Diffuse Color', 'Specular Color', 'Transparency', 'Metallic', 'Roughness', 'Specular Intensity', 'IOR', 'Direct Diffuse', 'Direct Specular', 'Direct All', 'Env Diffuse', 'Env Specular', 'Env All', 'Emissive', 'Light Map', 'Shadow', 'AO', 'Fresnel', 'Direct Transmit Diffuse', 'Direct Transmit Specular', 'Env Transmit Diffuse', 'Env Transmit Specular', 'Transmit All', 'Direct TRT', 'Env TRT', 'TRT All', 'Fog'];
+          _this.strComposite = ['Direct Diffuse', 'Direct Specular', 'Env Diffuse', 'Env Specular', 'Emissive', 'Light Map', 'Shadow', 'AO', 'Normal Map', 'Fog', 'Tone Mapping', 'Gamma Correction', 'Fresnel', 'Transmit Diffuse', 'Transmit Specular', 'TRT', 'TT'];
+          _this.strMisc = ['CSM Layer Coloration', 'Lighting With Albedo'];
+          _this.compositeModeToggleList = [];
+          _this.singleModeToggleList = [];
+          _this.miscModeToggleList = [];
+          _this.textComponentList = [];
+          _this.labelComponentList = [];
+          _this.textContentList = [];
+          _this.hideButtonLabel = void 0;
+          _this._currentColorIndex = 0;
+          _this.strColor = ['<color=#ffffff>', '<color=#000000>', '<color=#ff0000>', '<color=#00ff00>', '<color=#0000ff>'];
+          _this.color = [Color.WHITE, Color.BLACK, Color.RED, Color.GREEN, Color.BLUE];
+          return _this;
+        }
+
+        var _proto = DebugViewRuntimeControl.prototype;
+
+        _proto.start = function start() {
+          // get canvas resolution
+          var canvas = this.node.parent.getComponent(Canvas);
+
+          if (!canvas) {
+            console.error('debug-view-runtime-control should be child of Canvas');
+            return;
+          }
+
+          var uiTransform = this.node.parent.getComponent(UITransform);
+          var halfScreenWidth = uiTransform.width * 0.5;
+          var halfScreenHeight = uiTransform.height * 0.5;
+          var x = -halfScreenWidth + halfScreenWidth * 0.1,
+              y = halfScreenHeight - halfScreenHeight * 0.1;
+          var width = 200,
+              height = 20; // new nodes
+
+          var miscNode = this.node.getChildByName('MiscMode');
+          var buttonNode = instantiate(miscNode);
+          buttonNode.parent = this.node;
+          buttonNode.name = 'Buttons';
+          var titleNode = instantiate(miscNode);
+          titleNode.parent = this.node;
+          titleNode.name = 'Titles'; // title
+
+          for (var i = 0; i < 2; i++) {
+            var newLabel = instantiate(this.EnableAllCompositeModeButton.getChildByName('Label'));
+            newLabel.setPosition(x + (i > 0 ? 50 + width * 2 : 150), y, 0.0);
+            newLabel.setScale(0.75, 0.75, 0.75);
+            newLabel.parent = titleNode;
+
+            var _labelComponent = newLabel.getComponent(Label);
+
+            _labelComponent.string = i ? '----------Composite Mode----------' : '----------Single Mode----------';
+            _labelComponent.color = Color.WHITE;
+            _labelComponent.overflow = 0;
+            this.labelComponentList[this.labelComponentList.length] = _labelComponent;
+          }
+
+          y -= height; // single
+
+          var currentRow = 0;
+
+          for (var _i = 0; _i < this.strSingle.length; _i++, currentRow++) {
+            if (_i === this.strSingle.length >> 1) {
+              x += width;
+              currentRow = 0;
+            }
+
+            var newNode = _i ? instantiate(this.singleModeToggle) : this.singleModeToggle;
+            newNode.setPosition(x, y - height * currentRow, 0.0);
+            newNode.setScale(0.5, 0.5, 0.5);
+            newNode.parent = this.singleModeToggle.parent;
+            var textComponent = newNode.getComponentInChildren(RichText);
+            textComponent.string = this.strSingle[_i];
+            this.textComponentList[this.textComponentList.length] = textComponent;
+            this.textContentList[this.textContentList.length] = textComponent.string;
+            newNode.on(Toggle.EventType.TOGGLE, this.toggleSingleMode, this);
+            this.singleModeToggleList[_i] = newNode;
+          }
+
+          x += width; // buttons
+
+          this.EnableAllCompositeModeButton.setPosition(x + 15, y, 0.0);
+          this.EnableAllCompositeModeButton.setScale(0.5, 0.5, 0.5);
+          this.EnableAllCompositeModeButton.on(Button.EventType.CLICK, this.enableAllCompositeMode, this);
+          this.EnableAllCompositeModeButton.parent = buttonNode;
+          var labelComponent = this.EnableAllCompositeModeButton.getComponentInChildren(Label);
+          this.labelComponentList[this.labelComponentList.length] = labelComponent;
+          var changeColorButton = instantiate(this.EnableAllCompositeModeButton);
+          changeColorButton.setPosition(x + 90, y, 0.0);
+          changeColorButton.setScale(0.5, 0.5, 0.5);
+          changeColorButton.on(Button.EventType.CLICK, this.changeTextColor, this);
+          changeColorButton.parent = buttonNode;
+          labelComponent = changeColorButton.getComponentInChildren(Label);
+          labelComponent.string = 'TextColor';
+          this.labelComponentList[this.labelComponentList.length] = labelComponent;
+          var HideButton = instantiate(this.EnableAllCompositeModeButton);
+          HideButton.setPosition(x + 200, y, 0.0);
+          HideButton.setScale(0.5, 0.5, 0.5);
+          HideButton.on(Button.EventType.CLICK, this.hideUI, this);
+          HideButton.parent = this.node.parent;
+          labelComponent = HideButton.getComponentInChildren(Label);
+          labelComponent.string = 'Hide UI';
+          this.labelComponentList[this.labelComponentList.length] = labelComponent;
+          this.hideButtonLabel = labelComponent; // misc
+
+          y -= 40;
+
+          for (var _i2 = 0; _i2 < this.strMisc.length; _i2++) {
+            var _newNode = instantiate(this.compositeModeToggle);
+
+            _newNode.setPosition(x, y - height * _i2, 0.0);
+
+            _newNode.setScale(0.5, 0.5, 0.5);
+
+            _newNode.parent = miscNode;
+
+            var _textComponent = _newNode.getComponentInChildren(RichText);
+
+            _textComponent.string = this.strMisc[_i2];
+            this.textComponentList[this.textComponentList.length] = _textComponent;
+            this.textContentList[this.textContentList.length] = _textComponent.string;
+
+            var toggleComponent = _newNode.getComponent(Toggle);
+
+            toggleComponent.isChecked = _i2 ? true : false;
+
+            _newNode.on(Toggle.EventType.TOGGLE, _i2 ? this.toggleLightingWithAlbedo : this.toggleCSMColoration, this);
+
+            this.miscModeToggleList[_i2] = _newNode;
+          } // composite
+
+
+          y -= 150;
+
+          for (var _i3 = 0; _i3 < this.strComposite.length; _i3++) {
+            var _newNode2 = _i3 ? instantiate(this.compositeModeToggle) : this.compositeModeToggle;
+
+            _newNode2.setPosition(x, y - height * _i3, 0.0);
+
+            _newNode2.setScale(0.5, 0.5, 0.5);
+
+            _newNode2.parent = this.compositeModeToggle.parent;
+
+            var _textComponent2 = _newNode2.getComponentInChildren(RichText);
+
+            _textComponent2.string = this.strComposite[_i3];
+            this.textComponentList[this.textComponentList.length] = _textComponent2;
+            this.textContentList[this.textContentList.length] = _textComponent2.string;
+
+            _newNode2.on(Toggle.EventType.TOGGLE, this.toggleCompositeMode, this);
+
+            this.compositeModeToggleList[_i3] = _newNode2;
+          }
+        };
+
+        _proto.isTextMatched = function isTextMatched(textUI, textDescription) {
+          var tempText = new String(textUI);
+          var findIndex = tempText.search('>');
+
+          if (findIndex === -1) {
+            return textUI === textDescription;
+          } else {
+            tempText = tempText.substr(findIndex + 1);
+            tempText = tempText.substr(0, tempText.search('<'));
+            return tempText === textDescription;
+          }
+        };
+
+        _proto.toggleSingleMode = function toggleSingleMode(toggle) {
+          var debugView = director.root.debugView;
+          var textComponent = toggle.getComponentInChildren(RichText);
+
+          for (var i = 0; i < this.strSingle.length; i++) {
+            if (this.isTextMatched(textComponent.string, this.strSingle[i])) {
+              debugView.singleMode = i;
+            }
+          }
+        };
+
+        _proto.toggleCompositeMode = function toggleCompositeMode(toggle) {
+          var debugView = director.root.debugView;
+          var textComponent = toggle.getComponentInChildren(RichText);
+
+          for (var i = 0; i < this.strComposite.length; i++) {
+            if (this.isTextMatched(textComponent.string, this.strComposite[i])) {
+              debugView.enableCompositeMode(i, toggle.isChecked);
+            }
+          }
+        };
+
+        _proto.toggleLightingWithAlbedo = function toggleLightingWithAlbedo(toggle) {
+          var debugView = director.root.debugView;
+          debugView.lightingWithAlbedo = toggle.isChecked;
+        };
+
+        _proto.toggleCSMColoration = function toggleCSMColoration(toggle) {
+          var debugView = director.root.debugView;
+          debugView.csmLayerColoration = toggle.isChecked;
+        };
+
+        _proto.enableAllCompositeMode = function enableAllCompositeMode(button) {
+          var debugView = director.root.debugView;
+          debugView.enableAllCompositeMode(true);
+
+          for (var i = 0; i < this.compositeModeToggleList.length; i++) {
+            var _toggleComponent = this.compositeModeToggleList[i].getComponent(Toggle);
+
+            _toggleComponent.isChecked = true;
+          }
+
+          var toggleComponent = this.miscModeToggleList[0].getComponent(Toggle);
+          toggleComponent.isChecked = false;
+          debugView.csmLayerColoration = false;
+          toggleComponent = this.miscModeToggleList[1].getComponent(Toggle);
+          toggleComponent.isChecked = true;
+          debugView.lightingWithAlbedo = true;
+        };
+
+        _proto.hideUI = function hideUI(button) {
+          var titleNode = this.node.getChildByName('Titles');
+          var activeValue = !titleNode.active;
+          this.singleModeToggleList[0].parent.active = activeValue;
+          this.miscModeToggleList[0].parent.active = activeValue;
+          this.compositeModeToggleList[0].parent.active = activeValue;
+          this.EnableAllCompositeModeButton.parent.active = activeValue;
+          titleNode.active = activeValue;
+          this.hideButtonLabel.string = activeValue ? 'Hide UI' : 'Show UI';
+        };
+
+        _proto.changeTextColor = function changeTextColor(button) {
+          this._currentColorIndex++;
+
+          if (this._currentColorIndex >= this.strColor.length) {
+            this._currentColorIndex = 0;
+          }
+
+          for (var i = 0; i < this.textComponentList.length; i++) {
+            this.textComponentList[i].string = this.strColor[this._currentColorIndex] + this.textContentList[i] + '</color>';
+          }
+
+          for (var _i4 = 0; _i4 < this.labelComponentList.length; _i4++) {
+            this.labelComponentList[_i4].color = this.color[this._currentColorIndex];
+          }
+        };
+
+        _proto.onLoad = function onLoad() {};
+
+        _proto.update = function update(deltaTime) {};
+
+        return DebugViewRuntimeControl;
+      }(Component), (_descriptor = _applyDecoratedDescriptor(_class2.prototype, "compositeModeToggle", [_dec2], {
+        configurable: true,
+        enumerable: true,
+        writable: true,
+        initializer: function initializer() {
+          return null;
+        }
+      }), _descriptor2 = _applyDecoratedDescriptor(_class2.prototype, "singleModeToggle", [_dec3], {
+        configurable: true,
+        enumerable: true,
+        writable: true,
+        initializer: function initializer() {
+          return null;
+        }
+      }), _descriptor3 = _applyDecoratedDescriptor(_class2.prototype, "EnableAllCompositeModeButton", [_dec4], {
+        configurable: true,
+        enumerable: true,
+        writable: true,
+        initializer: function initializer() {
+          return null;
+        }
+      })), _class2)) || _class));
+
+      cclegacy._RF.pop();
+    }
+  };
+});
+
+System.register("chunks:///_virtual/game.ts", ['./rollupPluginModLoBabelHelpers.js', 'cc', './gVariable.ts'], function (exports) {
+  'use strict';
+
+  var _applyDecoratedDescriptor, _inheritsLoose, _initializerDefineProperty, _assertThisInitialized, cclegacy, _decorator, Label, Node, SpriteFrame, Prefab, profiler, Button, Sprite, instantiate, Color, Component, gVariable;
+
+  return {
+    setters: [function (module) {
+      _applyDecoratedDescriptor = module.applyDecoratedDescriptor;
+      _inheritsLoose = module.inheritsLoose;
+      _initializerDefineProperty = module.initializerDefineProperty;
+      _assertThisInitialized = module.assertThisInitialized;
+    }, function (module) {
+      cclegacy = module.cclegacy;
+      _decorator = module._decorator;
+      Label = module.Label;
+      Node = module.Node;
+      SpriteFrame = module.SpriteFrame;
+      Prefab = module.Prefab;
+      profiler = module.profiler;
+      Button = module.Button;
+      Sprite = module.Sprite;
+      instantiate = module.instantiate;
+      Color = module.Color;
+      Component = module.Component;
+    }, function (module) {
+      gVariable = module.gVariable;
+    }],
+    execute: function () {
+      var _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _dec7, _dec8, _dec9, _dec10, _dec11, _class, _class2, _descriptor, _descriptor2, _descriptor3, _descriptor4, _descriptor5, _descriptor6, _descriptor7, _descriptor8, _descriptor9, _descriptor10;
+
+      cclegacy._RF.push({}, "08607C2N4xEfKHmx9Z3JsQ6", "game", undefined);
+
+      var ccclass = _decorator.ccclass,
+          property = _decorator.property;
+      var btnStatus = {
+        notChoose: 0,
+        choose: 1
+      };
+      var errorTimes = 0;
+      var blankArray = [];
+      var checkBlockArray = [];
+      var level = [gVariable.level1, gVariable.level2];
+      var levelAns = [gVariable.level1Ans, gVariable.level2Ans];
+      var nowNumMap = [];
+      var game = exports('game', (_dec = ccclass('game'), _dec2 = property(Label), _dec3 = property(Label), _dec4 = property(Label), _dec5 = property(Node), _dec6 = property(Node), _dec7 = property(Node), _dec8 = property(Node), _dec9 = property({
+        type: SpriteFrame
+      }), _dec10 = property(Node), _dec11 = property(Prefab), _dec(_class = (_class2 = /*#__PURE__*/function (_Component) {
+        _inheritsLoose(game, _Component);
+
+        function game() {
+          var _this;
+
+          for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+            args[_key] = arguments[_key];
+          }
+
+          _this = _Component.call.apply(_Component, [this].concat(args)) || this;
+
+          _initializerDefineProperty(_this, "error", _descriptor, _assertThisInitialized(_this));
+
+          _initializerDefineProperty(_this, "title", _descriptor2, _assertThisInitialized(_this));
+
+          _initializerDefineProperty(_this, "time", _descriptor3, _assertThisInitialized(_this));
+
+          _initializerDefineProperty(_this, "table", _descriptor4, _assertThisInitialized(_this));
+
+          _initializerDefineProperty(_this, "topicNum", _descriptor5, _assertThisInitialized(_this));
+
+          _initializerDefineProperty(_this, "tableBtn", _descriptor6, _assertThisInitialized(_this));
+
+          _initializerDefineProperty(_this, "checkBlock", _descriptor7, _assertThisInitialized(_this));
+
+          _initializerDefineProperty(_this, "numBtnSprite", _descriptor8, _assertThisInitialized(_this));
+
+          _initializerDefineProperty(_this, "UINode", _descriptor9, _assertThisInitialized(_this));
+
+          _initializerDefineProperty(_this, "popUp", _descriptor10, _assertThisInitialized(_this));
+
+          _this.popUpNode = null;
+          _this.elapsedTime = 0;
+          return _this;
+        }
+
+        var _proto = game.prototype; // 計時器時間
+
+        _proto.start = function start() {
+          var _this2 = this;
+
+          profiler.hideStats();
+          this.popUpNode = null;
+          this.elapsedTime = 0;
+          this.createTopicNum();
+          this.createTableBtn();
+          this.createCheckBlock();
+          gVariable.nowChooseNumber = 1;
+          this.UINode.children[0].getComponent(Button).normalSprite = this.numBtnSprite[btnStatus.choose];
+          this.UINode.children[9].getComponent(Sprite).type = Sprite.Type.SLICED;
+          gVariable.eventTarget.on('closePop', function (arg1) {
+            _this2.closePopUI();
+          });
+        };
+
+        _proto.update = function update(deltaTime) {
+          this.elapsedTime += deltaTime;
+          var minutes = Math.floor(this.elapsedTime / 60);
+          var seconds = Math.floor(this.elapsedTime % 60);
+          var timeString = this.formatTime(minutes) + ":" + this.formatTime(seconds);
+
+          if (this.time && this.popUpNode == null) {
+            this.time.string = timeString;
+          }
+        };
+
+        _proto.formatTime = function formatTime(time) {
+          return time < 10 ? "0" + time : "" + time;
+        };
+
+        _proto.createTopicNum = function createTopicNum() {
+          var gapX = -3;
+          var gapY = 3;
+
+          for (var i = 0; i < 9; i++) {
+            //直
+            if (i % 3 == 0) {
+              gapY -= 3;
+            }
+
+            nowNumMap.push([]);
+
+            for (var j = 0; j < 9; j++) {
+              //橫
+              if (j % 3 == 0) {
+                gapX += 3;
+              }
+
+              var prefabInstance = instantiate(this.topicNum);
+              prefabInstance.active = true;
+              prefabInstance.getComponent(Label).string = level[gVariable.nowLevel][i][j];
+              this.table.addChild(prefabInstance);
+              prefabInstance.setPosition(-234 + 58 * j + gapX, 236 - 58 * i + gapY);
+              nowNumMap[i].push(level[gVariable.nowLevel][i][j]);
+            }
+
+            gapX = -3;
+          }
+        };
+
+        _proto.createTableBtn = function createTableBtn() {
+          var gapX = -3;
+          var gapY = 3;
+          var index = 0;
+
+          for (var i = 0; i < 9; i++) {
+            //直
+            if (i % 3 == 0) {
+              gapY -= 3;
+            }
+
+            for (var j = 0; j < 9; j++) {
+              //橫
+              if (j % 3 == 0) {
+                gapX += 3;
+              }
+
+              var prefabInstance = instantiate(this.tableBtn);
+              prefabInstance.active = true;
+              this.table.addChild(prefabInstance);
+              prefabInstance.setPosition(-234 + 58 * j + gapX, 236 - 58 * i + gapY);
+              prefabInstance.getComponent(Button).clickEvents[0].customEventData = index.toString();
+
+              if (level[gVariable.nowLevel][i][j] == " ") {
+                //空格才能按
+                blankArray.push(prefabInstance);
+                prefabInstance.getComponent(Button).interactable = true;
+                prefabInstance.name = "blank"; //檢查獲勝機制一開始為空格
+              } else {
+                prefabInstance.getComponent(Button).interactable = false;
+              }
+
+              index++;
+            }
+
+            gapX = -3;
+          }
+        };
+
+        _proto.createCheckBlock = function createCheckBlock() {
+          var gapX = -3;
+          var gapY = 3;
+          var index = 0;
+
+          for (var i = 0; i < 9; i++) {
+            //直
+            if (i % 3 == 0) {
+              gapY -= 3;
+            }
+
+            checkBlockArray.push([]);
+
+            for (var j = 0; j < 9; j++) {
+              //橫
+              if (j % 3 == 0) {
+                gapX += 3;
+              }
+
+              var prefabInstance = instantiate(this.checkBlock);
+              prefabInstance.active = false;
+              this.table.addChild(prefabInstance);
+              prefabInstance.setPosition(-234 + 58 * j + gapX, 236 - 58 * i + gapY);
+              prefabInstance.getComponent(Button).clickEvents[0].customEventData = index.toString();
+              prefabInstance.getComponent(Button).interactable = false;
+              prefabInstance.getComponent(Sprite).color = new Color(255, 0, 0, 0);
+              checkBlockArray[i].push(prefabInstance);
+              index++;
+            }
+
+            gapX = -3;
+          }
+        };
+
+        _proto.clickTable = function clickTable(event, customEventData) {
+          //點擊桌面空格
+          if (gVariable.checkModel == true) return; //檢查模式中
+
+          console.log("桌面位置: " + customEventData);
+          var btnNode = event.target;
+          var btnLabelComponent = event.target.getChildByName("Label").getComponent(Label);
+
+          if (btnLabelComponent.string == gVariable.nowChooseNumber) {
+            //避免檢查獲勝機制錯誤
+            console.log("這格已經是這個數字了");
+            return;
+          }
+
+          btnLabelComponent.string = gVariable.nowChooseNumber;
+          this.checkWin(customEventData, btnLabelComponent, btnNode);
+        };
+
+        _proto.chooseNum = function chooseNum(event, customEventData) {
+          //選擇數字
+          console.log("選擇數字: " + customEventData);
+
+          for (var i = 0; i < 10; i++) {
+            this.UINode.children[i].getComponent(Button).normalSprite = this.numBtnSprite[btnStatus.notChoose];
+            this.UINode.children[i].getComponent(Sprite).type = Sprite.Type.SLICED;
+          }
+
+          this.UINode.children[customEventData - 1].getComponent(Button).normalSprite = this.numBtnSprite[btnStatus.choose];
+          this.UINode.children[customEventData - 1].getComponent(Sprite).type = Sprite.Type.SLICED;
+          gVariable.nowChooseNumber = customEventData;
+
+          if (customEventData == 10) {
+            gVariable.checkModel = true;
+          } else {
+            gVariable.checkModel = false;
+          }
+
+          this.checkModel();
+        };
+
+        _proto.checkWin = function checkWin(choosePos, btnLabel, btnNode) {
+          //檢查按下去的這格對不對
+          var Xpos = choosePos % 9;
+          var Ypos = Math.floor(choosePos / 9);
+          nowNumMap[Ypos][Xpos] = gVariable.nowChooseNumber;
+          console.log("該格的解答: " + levelAns[gVariable.nowLevel][Ypos][Xpos]);
+
+          if (levelAns[gVariable.nowLevel][Ypos][Xpos] == gVariable.nowChooseNumber) {
+            //正確
+            console.log("correct");
+            btnLabel.color = new Color(0, 255, 0, 255);
+            btnNode.name = "correct";
+          } else {
+            //錯誤
+            console.log("error");
+            btnLabel.color = new Color(255, 0, 0, 255);
+            errorTimes++;
+            this.error.string = "錯誤次數" + errorTimes.toString() + " / 3";
+            btnNode.name = "error";
+
+            if (errorTimes == 3) {
+              //錯3次輸了
+              console.log("you lose");
+              this.popUpNode = instantiate(this.popUp);
+              this.popUpNode.getChildByName("bg").getChildByName("Label").getComponent(Label).string = gVariable.popUpText.lose;
+              this.popUpNode.getChildByName("bg").getChildByName("Time").getComponent(Label).string = "cost time: " + this.time.string;
+              this.node.addChild(this.popUpNode);
+            }
+          }
+
+          for (var i = 0; i < blankArray.length; i++) {
+            if (blankArray[i].name == "blank" || blankArray[i].name == "error") {
+              //空格或是填寫錯誤
+              return;
+            }
+
+            if (i == blankArray.length - 1) {
+              //贏了
+              console.log("you win");
+              this.popUpNode = instantiate(this.popUp);
+              this.popUpNode.getChildByName("bg").getChildByName("Label").getComponent(Label).string = gVariable.popUpText.win;
+              this.popUpNode.getChildByName("bg").getChildByName("Time").getComponent(Label).string = "cost time: " + this.time.string;
+              this.node.addChild(this.popUpNode);
+            }
+          }
+        };
+
+        _proto.checkModel = function checkModel() {
+          //檢查模式
+          if (gVariable.checkModel == true) {
+            for (var i = 0; i < checkBlockArray.length; i++) {
+              for (var j = 0; j < checkBlockArray[i].length; j++) {
+                checkBlockArray[i][j].active = true;
+                checkBlockArray[i][j].getComponent(Button).interactable = true;
+                checkBlockArray[i][j].getComponent(Sprite).color = new Color(255, 0, 0, 0);
+              }
+            }
+          } else {
+            for (var i = 0; i < checkBlockArray.length; i++) {
+              for (var j = 0; j < checkBlockArray[i].length; j++) {
+                checkBlockArray[i][j].active = false;
+                checkBlockArray[i][j].getComponent(Button).interactable = false;
+              }
+            }
+          }
+        };
+
+        _proto.clickCheckBtn = function clickCheckBtn(event, customEventData) {
+          console.log("click check: " + customEventData);
+          console.log("MAP: " + nowNumMap);
+          var Xpos = customEventData % 9;
+          var Ypos = Math.floor(customEventData / 9);
+          var num = nowNumMap[Ypos][Xpos];
+
+          for (var i = 0; i < checkBlockArray.length; i++) {
+            for (var j = 0; j < checkBlockArray[i].length; j++) {
+              checkBlockArray[i][j].getComponent(Sprite).color = new Color(255, 0, 0, 0);
+            }
+          }
+
+          if (num == ' ') return;
+
+          for (var i = 0; i < 9; i++) {
+            checkBlockArray[Ypos][i].getComponent(Sprite).color = new Color(0, 0, 255, 138);
+            checkBlockArray[i][Xpos].getComponent(Sprite).color = new Color(0, 0, 255, 138);
+          }
+
+          for (var i = 0; i < checkBlockArray.length; i++) {
+            for (var j = 0; j < checkBlockArray[i].length; j++) {
+              if (num == nowNumMap[i][j]) {
+                checkBlockArray[i][j].getComponent(Sprite).color = new Color(255, 0, 0, 138);
+              }
+            }
+          }
+        };
+
+        _proto.closePopUI = function closePopUI() {
+          this.node.removeChild(this.popUpNode);
+          this.popUpNode.destroy();
+          this.popUpNode = null;
+          this.nextLevel();
+        };
+
+        _proto.nextLevel = function nextLevel() {
+          if (errorTimes != 3) {
+            gVariable.nowLevel++;
+            this.title.string = "Level" + (gVariable.nowLevel + 1);
+          }
+
+          this.reset();
+        };
+
+        _proto.reset = function reset() {
+          blankArray = [];
+          checkBlockArray = [];
+          nowNumMap = [];
+          errorTimes = 0;
+          this.error.string = "錯誤次數" + errorTimes.toString() + " / 3";
+          this.elapsedTime = 0;
+          this.table.removeAllChildren();
+          this.createTopicNum();
+          this.createTableBtn();
+          this.createCheckBlock();
+        };
+
+        return game;
+      }(Component), (_descriptor = _applyDecoratedDescriptor(_class2.prototype, "error", [_dec2], {
+        configurable: true,
+        enumerable: true,
+        writable: true,
+        initializer: function initializer() {
+          return null;
+        }
+      }), _descriptor2 = _applyDecoratedDescriptor(_class2.prototype, "title", [_dec3], {
+        configurable: true,
+        enumerable: true,
+        writable: true,
+        initializer: function initializer() {
+          return null;
+        }
+      }), _descriptor3 = _applyDecoratedDescriptor(_class2.prototype, "time", [_dec4], {
+        configurable: true,
+        enumerable: true,
+        writable: true,
+        initializer: function initializer() {
+          return null;
+        }
+      }), _descriptor4 = _applyDecoratedDescriptor(_class2.prototype, "table", [_dec5], {
+        configurable: true,
+        enumerable: true,
+        writable: true,
+        initializer: function initializer() {
+          return null;
+        }
+      }), _descriptor5 = _applyDecoratedDescriptor(_class2.prototype, "topicNum", [_dec6], {
+        configurable: true,
+        enumerable: true,
+        writable: true,
+        initializer: function initializer() {
+          return null;
+        }
+      }), _descriptor6 = _applyDecoratedDescriptor(_class2.prototype, "tableBtn", [_dec7], {
+        configurable: true,
+        enumerable: true,
+        writable: true,
+        initializer: function initializer() {
+          return null;
+        }
+      }), _descriptor7 = _applyDecoratedDescriptor(_class2.prototype, "checkBlock", [_dec8], {
+        configurable: true,
+        enumerable: true,
+        writable: true,
+        initializer: function initializer() {
+          return null;
+        }
+      }), _descriptor8 = _applyDecoratedDescriptor(_class2.prototype, "numBtnSprite", [_dec9], {
+        configurable: true,
+        enumerable: true,
+        writable: true,
+        initializer: function initializer() {
+          return [];
+        }
+      }), _descriptor9 = _applyDecoratedDescriptor(_class2.prototype, "UINode", [_dec10], {
+        configurable: true,
+        enumerable: true,
+        writable: true,
+        initializer: function initializer() {
+          return null;
+        }
+      }), _descriptor10 = _applyDecoratedDescriptor(_class2.prototype, "popUp", [_dec11], {
+        configurable: true,
+        enumerable: true,
+        writable: true,
+        initializer: function initializer() {
+          return null;
+        }
+      })), _class2)) || _class));
+
+      cclegacy._RF.pop();
+    }
+  };
+});
+
+System.register("chunks:///_virtual/gVariable.ts", ['./rollupPluginModLoBabelHelpers.js', 'cc'], function (exports) {
+  'use strict';
+
+  var _inheritsLoose, cclegacy, _decorator, EventTarget, Component;
+
+  return {
+    setters: [function (module) {
+      _inheritsLoose = module.inheritsLoose;
+    }, function (module) {
+      cclegacy = module.cclegacy;
+      _decorator = module._decorator;
+      EventTarget = module.EventTarget;
+      Component = module.Component;
+    }],
+    execute: function () {
+      var _dec, _class, _class2;
+
+      cclegacy._RF.push({}, "6a2fd7XjLNHa5fzJEa6qfQO", "gVariable", undefined);
+
+      var ccclass = _decorator.ccclass,
+          property = _decorator.property;
+      var gVariable = exports('gVariable', (_dec = ccclass('gVariable'), _dec(_class = (_class2 = /*#__PURE__*/function (_Component) {
+        _inheritsLoose(gVariable, _Component);
+
+        function gVariable() {
+          return _Component.apply(this, arguments) || this;
+        }
+
+        var _proto = gVariable.prototype;
+
+        _proto.start = function start() {};
+
+        _proto.update = function update(deltaTime) {};
+
+        return gVariable;
+      }(Component), _class2.eventTarget = new EventTarget(), _class2.checkModel = false, _class2.nowLevel = 0, _class2.nowChooseNumber = null, _class2.popUpText = {
+        win: "your great you win",
+        lose: "you lose try again"
+      }, _class2.level1Ans = [//解答檢查用
+      ["5", "3", "4", "6", "7", "8", "9", "1", "2"], ["6", "7", "2", "1", "9", "5", "3", "4", "8"], ["1", "9", "8", "3", "4", "2", "5", "6", "7"], ["8", "5", "9", "7", "6", "1", "4", "2", "3"], ["4", "2", "6", "8", "5", "3", "7", "9", "1"], ["7", "1", "3", "9", "2", "4", "8", "5", "6"], ["9", "6", "1", "5", "3", "7", "2", "8", "4"], ["2", "8", "7", "4", "1", "9", "6", "3", "5"], ["3", "4", "5", "2", "8", "6", "1", "7", "9"]], _class2.level1 = [//題目
+      ["5", "3", " ", " ", "7", " ", " ", " ", " "], ["6", " ", " ", "1", "9", "5", " ", " ", " "], [" ", "9", "8", " ", " ", " ", " ", "6", " "], ["8", " ", " ", " ", "6", " ", " ", " ", "3"], ["4", " ", " ", "8", " ", "3", " ", " ", "1"], ["7", " ", " ", " ", "2", " ", " ", " ", "6"], [" ", "6", " ", " ", " ", " ", "2", "8", " "], [" ", " ", " ", "4", "1", "9", " ", " ", "5"], [" ", " ", " ", " ", "8", " ", " ", "7", "9"]], _class2.level2Ans = [//解答檢查用
+      ["1", "7", "4", "5", "9", "3", "8", "2", "6"], ["9", "5", "2", "8", "1", "6", "3", "4", "7"], ["6", "3", "8", "2", "4", "7", "5", "9", "1"], ["2", "8", "6", "1", "5", "9", "4", "7", "3"], ["5", "1", "9", "7", "3", "4", "2", "6", "8"], ["7", "4", "3", "6", "8", "2", "9", "1", "5"], ["4", "9", "1", "3", "7", "5", "6", "8", "2"], ["3", "6", "7", "4", "2", "8", "1", "5", "9"], ["8", "2", "5", "9", "6", "1", "7", "3", "4"]], _class2.level2 = [//題目
+      ["1", "7", " ", "5", " ", " ", "8", " ", " "], [" ", "5", "2", " ", "1", " ", " ", " ", " "], [" ", " ", " ", " ", " ", "7", "5", "9", " "], [" ", "8", " ", " ", " ", "9", "4", " ", "3"], [" ", "1", "9", "7", " ", "4", " ", " ", "8"], ["7", " ", " ", " ", " ", " ", " ", "1", "5"], ["4", " ", "1", " ", " ", " ", "6", " ", " "], ["3", " ", " ", " ", "2", " ", " ", "5", "9"], [" ", " ", " ", "9", "6", " ", " ", "3", " "]], _class2)) || _class));
+
+      cclegacy._RF.pop();
+    }
+  };
+});
+
+System.register("chunks:///_virtual/main", ['./debug-view-runtime-control.ts', './gVariable.ts', './game.ts', './popUp.ts'], function () {
+  'use strict';
+
+  return {
+    setters: [null, null, null, null],
+    execute: function () {}
+  };
+});
+
+System.register("chunks:///_virtual/popUp.ts", ['./rollupPluginModLoBabelHelpers.js', 'cc', './gVariable.ts'], function (exports) {
+  'use strict';
+
+  var _inheritsLoose, cclegacy, _decorator, Component, gVariable;
+
+  return {
+    setters: [function (module) {
+      _inheritsLoose = module.inheritsLoose;
+    }, function (module) {
+      cclegacy = module.cclegacy;
+      _decorator = module._decorator;
+      Component = module.Component;
+    }, function (module) {
+      gVariable = module.gVariable;
+    }],
+    execute: function () {
+      var _dec, _class;
+
+      cclegacy._RF.push({}, "187eaKljNxMWqQXEy4VNdCU", "popUp", undefined);
+
+      var ccclass = _decorator.ccclass,
+          property = _decorator.property;
+      var popUp = exports('popUp', (_dec = ccclass('popUp'), _dec(_class = /*#__PURE__*/function (_Component) {
+        _inheritsLoose(popUp, _Component);
+
+        function popUp() {
+          return _Component.apply(this, arguments) || this;
+        }
+
+        var _proto = popUp.prototype;
+
+        _proto.start = function start() {};
+
+        _proto.update = function update(deltaTime) {};
+
+        _proto.closeUI = function closeUI() {
+          gVariable.eventTarget.emit("closePop", " ");
+        };
+
+        return popUp;
+      }(Component)) || _class));
+
+      cclegacy._RF.pop();
+    }
+  };
+});
 
 (function(r) {
   r('virtual:///prerequisite-imports/main', 'chunks:///_virtual/main'); 
