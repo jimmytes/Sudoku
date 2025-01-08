@@ -22,8 +22,8 @@
   <body>
     <h1 class="header">Sudoku</h1>
 
-    <div id="GameDiv" cc_exact_fit_screen="false">
-      <div id="Cocos3dGameContainer">
+    <div id="GameDiv" cc_exact_fit_screen="false" style="display: flex; justify-content: center; align-items: center; transform: rotate(0deg); margin: 0px auto; width: 355px; height: 1360px;">
+      <div id="Cocos3dGameContainer" style="width: 100%; height: 100%;">
         <canvas id="GameCanvas" width="720" height="1360" tabindex="99"></canvas>
       </div>
     </div>
@@ -47,12 +47,20 @@
       const aspectRatio = 1170 / 2532;
 
       const element = document.getElementById('GameDiv');
+      const element1 = document.getElementById('GameCanvas');
+
       const screenWidth = window.innerWidth;  // 取得螢幕寬度
       console.log(screenWidth)
 
       element.style.width = screenWidth - 10 + 'px';  // 設置元素寬度為螢幕寬度
-      element.style.height = (screenWidth / aspectRatio) + 'px';  // 根據比例計算高度
+      element1.style.width = screenWidth - 10 + 'px';
+      //element.style.height = (screenWidth / aspectRatio) + 'px';  // 根據比例計算高度
     }
 </script>
   </body>
+  <style>
+    body {
+  overflow: hidden;
+}
+  </style>
 </html>
