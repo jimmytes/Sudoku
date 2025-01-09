@@ -369,8 +369,8 @@ System.register("chunks:///_virtual/game.ts", ['./rollupPluginModLoBabelHelpers.
       var errorTimes = 0;
       var blankArray = [];
       var checkBlockArray = [];
-      var level = [gVariable.level1, gVariable.level2];
-      var levelAns = [gVariable.level1Ans, gVariable.level2Ans];
+      var level = [gVariable.level1, gVariable.level2, gVariable.level3];
+      var levelAns = [gVariable.level1Ans, gVariable.level2Ans, gVariable.level3Ans];
       var nowNumMap = [];
       var game = exports('game', (_dec = ccclass('game'), _dec2 = property(Label), _dec3 = property(Label), _dec4 = property(Label), _dec5 = property(Node), _dec6 = property(Node), _dec7 = property(Node), _dec8 = property(Node), _dec9 = property({
         type: SpriteFrame
@@ -629,6 +629,12 @@ System.register("chunks:///_virtual/game.ts", ['./rollupPluginModLoBabelHelpers.
               console.log("you win");
               this.popUpNode = instantiate(this.popUp);
               this.popUpNode.getChildByName("bg").getChildByName("Label").getComponent(Label).string = gVariable.popUpText.win;
+
+              if (gVariable.nowLevel == 2) {
+                //無聊哈哈
+                this.popUpNode.getChildByName("bg").getChildByName("Label").getComponent(Label).string = gVariable.popUpText.special;
+              }
+
               this.popUpNode.getChildByName("bg").getChildByName("Time").getComponent(Label).string = "cost time: " + this.time.string;
               this.node.addChild(this.popUpNode);
             }
@@ -828,12 +834,15 @@ System.register("chunks:///_virtual/gVariable.ts", ['./rollupPluginModLoBabelHel
         return gVariable;
       }(Component), _class2.eventTarget = new EventTarget(), _class2.checkModel = false, _class2.nowLevel = 0, _class2.nowChooseNumber = null, _class2.popUpText = {
         win: "your great you win",
-        lose: "you lose try again"
+        lose: "you lose try again",
+        special: "Viola i love you"
       }, _class2.level1Ans = [//解答檢查用
       ["5", "3", "4", "6", "7", "8", "9", "1", "2"], ["6", "7", "2", "1", "9", "5", "3", "4", "8"], ["1", "9", "8", "3", "4", "2", "5", "6", "7"], ["8", "5", "9", "7", "6", "1", "4", "2", "3"], ["4", "2", "6", "8", "5", "3", "7", "9", "1"], ["7", "1", "3", "9", "2", "4", "8", "5", "6"], ["9", "6", "1", "5", "3", "7", "2", "8", "4"], ["2", "8", "7", "4", "1", "9", "6", "3", "5"], ["3", "4", "5", "2", "8", "6", "1", "7", "9"]], _class2.level1 = [//題目
       ["5", "3", " ", " ", "7", " ", " ", " ", " "], ["6", " ", " ", "1", "9", "5", " ", " ", " "], [" ", "9", "8", " ", " ", " ", " ", "6", " "], ["8", " ", " ", " ", "6", " ", " ", " ", "3"], ["4", " ", " ", "8", " ", "3", " ", " ", "1"], ["7", " ", " ", " ", "2", " ", " ", " ", "6"], [" ", "6", " ", " ", " ", " ", "2", "8", " "], [" ", " ", " ", "4", "1", "9", " ", " ", "5"], [" ", " ", " ", " ", "8", " ", " ", "7", "9"]], _class2.level2Ans = [//解答檢查用
       ["1", "7", "4", "5", "9", "3", "8", "2", "6"], ["9", "5", "2", "8", "1", "6", "3", "4", "7"], ["6", "3", "8", "2", "4", "7", "5", "9", "1"], ["2", "8", "6", "1", "5", "9", "4", "7", "3"], ["5", "1", "9", "7", "3", "4", "2", "6", "8"], ["7", "4", "3", "6", "8", "2", "9", "1", "5"], ["4", "9", "1", "3", "7", "5", "6", "8", "2"], ["3", "6", "7", "4", "2", "8", "1", "5", "9"], ["8", "2", "5", "9", "6", "1", "7", "3", "4"]], _class2.level2 = [//題目
-      ["1", "7", " ", "5", " ", " ", "8", " ", " "], [" ", "5", "2", " ", "1", " ", " ", " ", " "], [" ", " ", " ", " ", " ", "7", "5", "9", " "], [" ", "8", " ", " ", " ", "9", "4", " ", "3"], [" ", "1", "9", "7", " ", "4", " ", " ", "8"], ["7", " ", " ", " ", " ", " ", " ", "1", "5"], ["4", " ", "1", " ", " ", " ", "6", " ", " "], ["3", " ", " ", " ", "2", " ", " ", "5", "9"], [" ", " ", " ", "9", "6", " ", " ", "3", " "]], _class2)) || _class));
+      ["1", "7", " ", "5", " ", " ", "8", " ", " "], [" ", "5", "2", " ", "1", " ", " ", " ", " "], [" ", " ", " ", " ", " ", "7", "5", "9", " "], [" ", "8", " ", " ", " ", "9", "4", " ", "3"], [" ", "1", "9", "7", " ", "4", " ", " ", "8"], ["7", " ", " ", " ", " ", " ", " ", "1", "5"], ["4", " ", "1", " ", " ", " ", "6", " ", " "], ["3", " ", " ", " ", "2", " ", " ", "5", "9"], [" ", " ", " ", "9", "6", " ", " ", "3", " "]], _class2.level3Ans = [//解答檢查用
+      ["1", "3", "2", "5", "6", "7", "9", "4", "8"], ["5", "4", "6", "3", "8", "9", "2", "1", "7"], ["9", "7", "8", "2", "4", "1", "6", "3", "5"], ["2", "6", "4", "9", "1", "8", "7", "5", "3"], ["7", "1", "5", "6", "3", "2", "8", "9", "4"], ["3", "8", "9", "4", "7", "5", "1", "2", "6"], ["8", "5", "7", "1", "2", "3", "4", "6", "9"], ["6", "9", "1", "7", "5", "4", "3", "8", "2"], ["4", "2", "3", "8", "9", "6", "5", "7", "1"]], _class2.level3 = [//題目
+      [" ", "3", " ", " ", " ", " ", "9", " ", " "], [" ", " ", "6", " ", " ", " ", " ", " ", " "], [" ", " ", " ", "2", "4", "1", " ", "3", " "], [" ", " ", " ", "9", " ", " ", "7", " ", " "], [" ", " ", " ", " ", " ", "2", " ", " ", "4"], [" ", "8", " ", " ", "7", " ", " ", "2", " "], ["8", "5", " ", " ", " ", " ", " ", " ", " "], [" ", "9", " ", "7", " ", "4", " ", " ", " "], [" ", " ", " ", " ", " ", "6", " ", " ", "1"]], _class2)) || _class));
 
       cclegacy._RF.pop();
     }
