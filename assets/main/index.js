@@ -331,7 +331,7 @@ System.register("chunks:///_virtual/debug-view-runtime-control.ts", ['./rollupPl
 System.register("chunks:///_virtual/game.ts", ['./rollupPluginModLoBabelHelpers.js', 'cc', './gVariable.ts'], function (exports) {
   'use strict';
 
-  var _applyDecoratedDescriptor, _inheritsLoose, _initializerDefineProperty, _assertThisInitialized, cclegacy, _decorator, Label, Node, SpriteFrame, Prefab, profiler, Button, instantiate, Sprite, Color, Component, gVariable;
+  var _applyDecoratedDescriptor, _inheritsLoose, _initializerDefineProperty, _assertThisInitialized, cclegacy, _decorator, Label, Node, SpriteFrame, Prefab, sys, profiler, Button, instantiate, Sprite, Color, Component, gVariable;
 
   return {
     setters: [function (module) {
@@ -346,6 +346,7 @@ System.register("chunks:///_virtual/game.ts", ['./rollupPluginModLoBabelHelpers.
       Node = module.Node;
       SpriteFrame = module.SpriteFrame;
       Prefab = module.Prefab;
+      sys = module.sys;
       profiler = module.profiler;
       Button = module.Button;
       instantiate = module.instantiate;
@@ -415,6 +416,11 @@ System.register("chunks:///_virtual/game.ts", ['./rollupPluginModLoBabelHelpers.
 
         _proto.start = function start() {
           var _this2 = this;
+
+          if (sys.localStorage.getItem("levelRecord") != undefined && sys.localStorage.getItem("levelRecord") != null) {
+            gVariable.nowLevel = Number(sys.localStorage.getItem("levelRecord"));
+            this.title.string = "Level" + (gVariable.nowLevel + 1);
+          }
 
           profiler.hideStats();
           this.popUpNode = null;
@@ -721,7 +727,13 @@ System.register("chunks:///_virtual/game.ts", ['./rollupPluginModLoBabelHelpers.
         _proto.nextLevel = function nextLevel() {
           if (errorTimes != 3) {
             gVariable.nowLevel++;
+
+            if (gVariable.nowLevel >= 3) {
+              gVariable.nowLevel = 0;
+            }
+
             this.title.string = "Level" + (gVariable.nowLevel + 1);
+            sys.localStorage.setItem("levelRecord", gVariable.nowLevel.toString());
           }
 
           this.reset();

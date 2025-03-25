@@ -19,8 +19,15 @@
     <link rel="stylesheet" type="text/css" href="style.css"/>
     <link rel="icon" href="favicon.ico"/>
   </head>
+  <style>
+    html, body {
+        margin: 0;
+        padding: 0;
+        overflow: hidden; /* 禁止滾動 */
+        height: 100%; /* 確保頁面佔滿整個視窗 */
+    }
+  </style>
   <body>
-    <h1 class="header">Sudoku</h1>
 
     <div id="GameDiv" cc_exact_fit_screen="false">
       <div id="Cocos3dGameContainer">
@@ -42,16 +49,29 @@
 <script>
     System.import('./index.js').catch(function(err) { console.error(err); })
     window.addEventListener('resize', adjustElementSize);
-    adjustElementSize();
+    const element = document.getElementById('GameDiv');
+    let screenWidth = window.innerWidth;
+    let screenHeight = window.innerHeight;
+    if(screenWidth > 720){
+          element.style.width = 720 + 'px'
+          element.style.height = screenHeight - 10 + 'px'
+        }
+        else{
+          element.style.width = screenWidth - 10 + 'px'
+          element.style.height = ''
+        }
+
     function adjustElementSize() {
-      const aspectRatio = 1170 / 2532;
 
-      const element = document.getElementById('GameDiv');
-      const screenWidth = window.innerWidth;  // 取得螢幕寬度
-      console.log(screenWidth)
-
-      element.style.width = screenWidth - 10 + 'px';  // 設置元素寬度為螢幕寬度
-      element.style.height = (screenWidth / aspectRatio) + 'px';  // 根據比例計算高度
+      screenWidth = window.innerWidth;
+        if(screenWidth > 720){
+          element.style.width = 720 + 'px'
+          element.style.height = screenHeight - 10 + 'px'
+        }
+        else{
+          element.style.width = screenWidth - 10 + 'px'
+          element.style.height = ''
+        }
     }
 </script>
   </body>
