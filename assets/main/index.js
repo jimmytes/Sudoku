@@ -752,6 +752,10 @@ System.register("chunks:///_virtual/game.ts", ['./rollupPluginModLoBabelHelpers.
           this.createCheckBlock();
         };
 
+        _proto.backToLobby = function backToLobby() {
+          window.location.href = "https://jimmytes.github.io/gameLobby/";
+        };
+
         return game;
       }(Component), (_descriptor = _applyDecoratedDescriptor(_class2.prototype, "error", [_dec2], {
         configurable: true,
@@ -865,7 +869,7 @@ System.register("chunks:///_virtual/gVariable.ts", ['./rollupPluginModLoBabelHel
         _proto.update = function update(deltaTime) {};
 
         return gVariable;
-      }(Component), _class2.eventTarget = new EventTarget(), _class2.checkModel = true, _class2.noteModel = false, _class2.nowLevel = 0, _class2.nowChooseNumber = null, _class2.popUpText = {
+      }(Component), _class2.eventTarget = new EventTarget(), _class2.checkModel = false, _class2.noteModel = false, _class2.nowLevel = 0, _class2.nowChooseNumber = null, _class2.popUpText = {
         win: "your great you win",
         lose: "you lose try again",
         special: "Viola i love you"
